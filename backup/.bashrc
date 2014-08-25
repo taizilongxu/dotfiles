@@ -1,1 +1,0 @@
-/home/limbo/dotfile/bashrc
