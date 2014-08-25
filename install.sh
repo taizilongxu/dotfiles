@@ -1,4 +1,14 @@
 #!/bin/bash
+
+mkdir `pwd`/backup
+mv -f ~/.vimrc `pwd`/backup/.vimrc
+mv -f ~/.vim `pwd`/backup/.vim
+mv -f ~/.tmux.conf `pwd`/backup/.tmux.conf
+mv -f ~/.profile `pwd`/backup/.profile
+mv -f ~/.bashrc `pwd`/backup/.bashrc
+mv -f ~/.zshrc `pwd`/backup/.zshrc
+
+
 ln -s `pwd`/vimrc ~/.vimrc
 ln -s `pwd`/vim ~/.vim
 ln -s `pwd`/tmux.conf ~/.tmux.conf
