@@ -10,7 +10,7 @@ mv -f ~/.zshrc `pwd`/backup/.zshrc
 
 
 ln -s `pwd`/vimrc ~/.vimrc
-ln -s `pwd`/vim ~/.vim
+ln -s `pwd`/vim_set ~/.vim
 ln -s `pwd`/tmux.conf ~/.tmux.conf
 ln -s `pwd`/profile ~/.profile
 ln -s `pwd`/bashrc ~/.bashrc
