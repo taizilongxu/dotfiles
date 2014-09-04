@@ -87,9 +87,9 @@ alias tmux='tmux -2'
 
 tmux_init()
 {
-    tmux new-session -s "kumu" -d -n "local"    # 开启一个会话
+    tmux new-session -s "vim" -d -n "local"    # 开启一个会话
     tmux new-window -n "other"          # 开启一个窗口
-    tmux split-window -h                # 开启一个竖屏
+    tmux split-window -h "mocp"               # 开启一个竖屏
     tmux split-window -v "top"          # 开启一个横屏,并执行top命令
     tmux -2 attach-session -d           # tmux -2强制启用256color，连接已开启的tmux
 }

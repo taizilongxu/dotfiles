@@ -55,6 +55,7 @@ Plugin 'bling/vim-airline'            " 状态栏
 Plugin 'fugitive.vim'                 " git插件
 Plugin 'Gist.vim'                     " gist
 Plugin 'WebAPI.vim'                   " gist依赖插件
+Plugin 'mattn/emmet-vim'              " Zencoding
 " Plugin 'Pydiction'                    " python自动补全
 " Plugin 'bufexplorer.zip' " 打开历史文件 :BufExplorer
 " Plugin 'OmniCppComplete' " c/c++不全
@@ -72,7 +73,7 @@ filetype plugin indent on    " required
 " else
 "     set background=dark
 " endif
-colorscheme molokai            " molokai
+colorscheme  molokai           " molokai
 set autowrite                  " 自动保存
 set listchars=tab:>-,trail:-   " tab 显示
 set mouse=a                    " 鼠标支持
