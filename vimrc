@@ -34,8 +34,7 @@ Plugin 'surround.vim'                 " 补全括号或引号等cs,ds,yss
 
 " wm界面
 Plugin 'The-NERD-tree'
-Plugin 'winmanager'
-Plugin 'taglist.vim'
+" Plugin 'winmanager'
 Plugin 'minibufexpl.vim'              " buffer插件
 Plugin 'ctags.vim'
 
@@ -55,7 +54,8 @@ Plugin 'bling/vim-airline'            " 状态栏
 Plugin 'fugitive.vim'                 " git插件
 Plugin 'Gist.vim'                     " gist
 Plugin 'WebAPI.vim'                   " gist依赖插件
-Plugin 'mattn/emmet-vim'              " Zencoding
+Plugin 'Tagbar'                       " 代替taglist
+" Plugin 'mattn/emmet-vim'              " Zencoding
 " Plugin 'Pydiction'                    " python自动补全
 " Plugin 'bufexplorer.zip' " 打开历史文件 :BufExplorer
 " Plugin 'OmniCppComplete' " c/c++不全
@@ -170,7 +170,7 @@ let MRU_Max_Entries=50 " 记录条数
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -344,8 +344,8 @@ endfunc
 " Tag list (ctags) "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim
+" let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的
+" let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window = 0 "在右侧窗口中显示taglist窗口
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -371,14 +371,14 @@ let g:miniBufExplMoreThanOne=0
 " NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTree_title="[NERDTree]"
-let g:winManagerWindowLayout="NERDTree|TagList"
-function! NERDTree_Start()
-    exec 'NERDTree'
-endfunction
-function! NERDTree_IsValid()
-    return 1
-endfunction
-nmap wm :WMToggle<CR>
+" let g:winManagerWindowLayout="NERDTree|TagList"
+" function! NERDTree_Start()
+"     exec 'NERDTree'
+" endfunction
+" function! NERDTree_IsValid()
+"     return 1
+" endfunction
+" nmap wm :WMToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -493,3 +493,64 @@ let g:goyo_margin_bottom = 2
 
 let g:airline_theme="powerlineish"
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" tagbar
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_width = 30
+let g:tagbar_ctags_bin = 'ctags'
+
+function! ToggleNERDTreeAndTagbar()
+    let w:jumpbacktohere = 1
+
+    " Detect which plugins are open
+    if exists('t:NERDTreeBufName')
+        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+    else
+        let nerdtree_open = 0
+    endif
+    let tagbar_open = bufwinnr('__Tagbar__') != -1
+
+    " Perform the appropriate action
+    if nerdtree_open && tagbar_open
+        NERDTreeClose
+        TagbarClose
+    elseif nerdtree_open
+        TagbarOpen
+    elseif tagbar_open
+        NERDTree
+    else
+        NERDTree
+        TagbarOpen
+    endif
+
+    " Jump back to the original window
+    for window in range(1, winnr('$'))
+        execute window . 'wincmd w'
+        if exists('w:jumpbacktohere')
+            unlet w:jumpbacktohere
+            break
+        endif
+    endfor
+endfunction
+
+nmap wm :call ToggleNERDTreeAndTagbar()<CR>
+
+" 关闭最后窗口同时关闭nerdtree
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+    if exists("t:NERDTreeBufName")
+        if bufwinnr(t:NERDTreeBufName) != -1
+            if winnr("$") == 1
+                q
+            elseif winnr("$") == 2
+                if bufwinnr("__Tag_List__") != -1
+                    q
+                endif
+            endif
+        endif
+    endif
+endfunction
