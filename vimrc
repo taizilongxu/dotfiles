@@ -53,13 +53,14 @@ Plugin 'Smooth-Scroll'                " 平滑滚动
 Plugin 'bling/vim-airline'            " 状态栏
 Plugin 'fugitive.vim'                 " git插件
 Plugin 'Gist.vim'                     " gist
+Plugin 'airblade/vim-gitgutter'       " git diff
 Plugin 'WebAPI.vim'                   " gist依赖插件
 Plugin 'Tagbar'                       " 代替taglist
 " Plugin 'mattn/emmet-vim'              " Zencoding
 " Plugin 'Pydiction'                    " python自动补全
-" Plugin 'bufexplorer.zip' " 打开历史文件 :BufExplorer
-" Plugin 'OmniCppComplete' " c/c++不全
-" Plugin 'Syntastic'       " 语法检查
+" Plugin 'bufexplorer.zip'              " 打开历史文件 :BufExplorer
+" Plugin 'OmniCppComplete'              " c/c++不全
+" Plugin 'Syntastic'                    " 语法检查
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,7 +74,9 @@ filetype plugin indent on    " required
 " else
 "     set background=dark
 " endif
-colorscheme  molokai           " molokai
+let g:solarized_termcolors=256 " 终端和shell配色不同
+" let g:solarized_termtrans = 1
+colorscheme  molokai           " molokai zenburn Tomorrow
 set autowrite                  " 自动保存
 set listchars=tab:>-,trail:-   " tab 显示
 set mouse=a                    " 鼠标支持
@@ -86,7 +89,6 @@ set nobackup                   " 从不备份
 set cursorline                 " 突出显示当前行
 set cursorcolumn               " 突出显示当前列
 set ruler                      " 打开状态栏标尺
-Plugin 'airblade/vim-gitgutter'       " git diff
 set showcmd                    " 显示命令
 set showmatch                  " 显示匹配的括号
 set ai                         " 自动缩进
@@ -109,7 +111,7 @@ set fileencodings=utf-8,gbk    " 中文设置
 set hlsearch                   " 高亮搜索
 set ignorecase                 " 搜索忽略大小写
 map <F3> :%s/\s\+$//<CR>
-set foldmethod=indent          " 代码折叠
+set foldmethod=indent          " 代码折叠 indent
 
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制,好处：误删什么的，如果以前屏幕打开，可以找回
 set t_ti= t_te=
@@ -491,8 +493,17 @@ let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:airline_theme="powerlineish"
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" airline
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme="powerlineish" "powerlineish
+let g:airline_powerline_fonts=1
+set laststatus=2
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " tagbar
@@ -535,8 +546,11 @@ function! ToggleNERDTreeAndTagbar()
 endfunction
 
 nmap wm :call ToggleNERDTreeAndTagbar()<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " 关闭最后窗口同时关闭nerdtree
+""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Close all open buffers on entering a window if the only
@@ -554,3 +568,4 @@ function! s:CloseIfOnlyNerdTreeLeft()
         endif
     endif
 endfunction
+""""""""""""""""""""""""""""""""""""""""""""""""""
