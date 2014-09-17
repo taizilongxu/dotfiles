@@ -5,8 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# miloshadzic pygmalion dpoggi smt prose
-ZSH_THEME="powerline"
+# miloshadzic pygmalion dpoggi smt prose agnoster
+ZSH_THEME="smt"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -46,7 +46,7 @@ ZSH_THEME="powerline"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump github pylint tmuxinator)
+plugins=(git autojump github pylint tmuxinator sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,6 +84,7 @@ alias e='vim'
 # alias python='ipython'
 alias matlab='/usr/local/MATLAB/R2013b/bin/matlab'
 alias tmux='tmux -2'
+alias dstat='dstat -cdlmnpsy'
 
 tmux_init()
 {
@@ -103,4 +104,4 @@ fi
 # test
 ####################################################
 
-PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+# PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'

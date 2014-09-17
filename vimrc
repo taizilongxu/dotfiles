@@ -74,6 +74,7 @@ filetype plugin indent on    " required
 " else
 "     set background=dark
 " endif
+set background=dark
 let g:solarized_termcolors=256 " 终端和shell配色不同
 " let g:solarized_termtrans = 1
 colorscheme  molokai           " molokai zenburn Tomorrow
@@ -82,6 +83,7 @@ set listchars=tab:>-,trail:-   " tab 显示
 set mouse=a                    " 鼠标支持
 filetype plugin on             " 允许插件
 syntax enable                  " 语法高亮
+syntax on
 set helplang=cn                " 中文文档
 set nu                         " 显示行号
 set relativenumber             " 设置相对行号
@@ -476,12 +478,8 @@ let g:EasyMotion_leader_key = 'f'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " gundo 文件时光机
 """"""""""""""""""""""""""""""""""""""""""""""""""
-map <F8> :GundoToggle<CR>
-try
-    set undodir=~/.vim/temp_dirs/undodir
+map <F8> :GundoToggle<CR> try set undodir=~/.vim/temp_dirs/undodir
     set undofile
-catch
-endtry
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -568,4 +566,10 @@ function! s:CloseIfOnlyNerdTreeLeft()
         endif
     endif
 endfunction
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" gist
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gist_open_browser_after_post = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""
