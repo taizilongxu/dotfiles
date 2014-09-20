@@ -79,15 +79,15 @@ let g:solarized_termcolors=256 " 终端和shell配色不同
 " let g:solarized_termtrans = 1
 colorscheme  molokai           " molokai zenburn Tomorrow
 set autowrite                  " 自动保存
-set listchars=tab:>-,trail:-   " tab 显示
+" set listchars=tab:>-,trail:-   " tab 显示
 set mouse=a                    " 鼠标支持
 filetype plugin on             " 允许插件
-syntax enable                  " 语法高亮
+" syntax enable                  " 语法高亮
 syntax on
-set helplang=cn                " 中文文档
-set nu                         " 显示行号
+set helplang=cn                " 中文文档 set nu                         " 显示行号
 set relativenumber             " 设置相对行号
 set nobackup                   " 从不备份
+set undodir=~/.undodir
 set cursorline                 " 突出显示当前行
 set cursorcolumn               " 突出显示当前列
 set ruler                      " 打开状态栏标尺
