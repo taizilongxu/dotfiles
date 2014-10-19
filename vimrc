@@ -56,6 +56,8 @@ Plugin 'Gist.vim'                     " gist
 Plugin 'airblade/vim-gitgutter'       " git diff
 Plugin 'WebAPI.vim'                   " gist依赖插件
 Plugin 'Tagbar'                       " 代替taglist
+Plugin 'Valloric/YouCompleteMe'       " 补全插件
+" Plugin 'pyflakes.vim'                 " python语法检测
 " Plugin 'mattn/emmet-vim'              " Zencoding
 " Plugin 'Pydiction'                    " python自动补全
 " Plugin 'bufexplorer.zip'              " 打开历史文件 :BufExplorer
@@ -572,4 +574,32 @@ endfunction
 " gist
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:gist_open_browser_after_post = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" youcompleteme
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" 屏蔽一些文件
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'gitcommit' : 1,
+      \}
+
+" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+" 超级有用文件跳转
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" let g:syntastic_always_populate_loc_list = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" pyflakes
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""""""""""""""""""""""""""""""""

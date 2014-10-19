@@ -88,12 +88,12 @@ alias dstat='dstat -cdlmnpsy'
 
 tmux_init()
 {
-    tmux new-session -s "vim" -d -n "local"    # 开启一个会话
+    tmux new-session -s "workspace" -d -n "local"    # 开启一个会话
     tmux new-window -n "other"          # 开启一个窗口
     tmux split-window -h "douban.fm"               # 开启一个竖屏
     tmux split-window -v "htop"          # 开启一个横屏,并执行top命令
     tmux -2 attach-session -d           # tmux -2强制启用256color，连接已开启的tmux
-    selectp -t 1 #选中0panel
+    selectp -t 2 #选中0panel
 }
 # 判断是否已有开启的tmux会话，没有则开启
 if which tmux 2>&1 >/dev/null; then
