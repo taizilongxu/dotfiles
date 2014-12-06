@@ -1,154 +1,176 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" All of your Plugins must be added before the following line
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
-"  the runtime path to include Vundle and initialize
+" Vundle {
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+    " All of your Plugins must be added before the following line
+    " To ignore plugin indent changes, instead use:
+    "filetype plugin on
+    "
+    " Brief help
+    " :PluginList       - lists configured plugins
+    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+    "
+    " see :h vundle for more details or wiki for FAQ
+    " Put your non-Plugin stuff after this line
+    """"""""""""""""""""""""""""""""""""""""""""""""""
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
+    "  the runtime path to include Vundle and initialize
 
-Plugin 'gmarik/Vundle.vim'            " 必须安装
-"Plugin 'L9'                          " FuzzyFinder依赖包
-"Plugin 'FuzzyFinder'                 " 文件快速查找
-Plugin 'SirVer/ultisnips'             " Track the engine.
-Plugin 'honza/vim-snippets'           " Snippets are separated from the engine. Add this if you want them: Plugin 'unite.vim'
-Plugin 'vim-powerline'                " 状态栏增强
-Plugin 'kien/rainbow_parentheses.vim' " 括号增强,彩色
-Plugin 'trailing-whitespace'          " 增加尾部空格的显示
-Plugin 'commentary.vim'               " 注释多行
-Plugin 'surround.vim'                 " 补全括号或引号等cs,ds,yss
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 
-" wm界面
-Plugin 'The-NERD-tree'
-" Plugin 'winmanager'
-Plugin 'minibufexpl.vim'              " buffer插件
-Plugin 'ctags.vim'
+    Plugin 'gmarik/Vundle.vim'            " 必须安装
+    Plugin 'SirVer/ultisnips'             " Track the engine.
+    Plugin 'honza/vim-snippets'           " Snippets are separated from the engine. Add this if you want them: Plugin 'unite.vim'
+    Plugin 'kien/rainbow_parentheses.vim' " 括号增强,彩色
+    Plugin 'trailing-whitespace'          " 增加尾部空格的显示
+    Plugin 'commentary.vim'               " 注释多行
+    Plugin 'surround.vim'                 " 补全括号或引号等cs,ds,yss
 
-Plugin 'timestamp.vim'                " 插入最后修改时间
-Plugin 'plasticboy/vim-markdown'      " Markdown格式高亮
-Plugin 'flazz/vim-colorschemes'
-Plugin 'molokai'                      " 配色
-Plugin 'Solarized'                    " 配色
-Plugin 'Tabular'                      " 注释等格式对齐插件
-Plugin 'mru.vim'                      " 历史文件
-Plugin 'ctrlp.vim'                    " 文件搜寻
-Plugin 'Easymotion'                   " 文件快速定位
-Plugin 'pydoc.vim'                    " python文档
-Plugin 'gundo'                        " 文件时光机
-Plugin 'Smooth-Scroll'                " 平滑滚动
-Plugin 'bling/vim-airline'            " 状态栏
-Plugin 'fugitive.vim'                 " git插件
-Plugin 'Gist.vim'                     " gist
-Plugin 'airblade/vim-gitgutter'       " git diff
-Plugin 'WebAPI.vim'                   " gist依赖插件
-Plugin 'Tagbar'                       " 代替taglist
-Plugin 'Valloric/YouCompleteMe'       " 补全插件
-" Plugin 'pyflakes.vim'                 " python语法检测
-" Plugin 'mattn/emmet-vim'              " Zencoding
-" Plugin 'Pydiction'                    " python自动补全
-" Plugin 'bufexplorer.zip'              " 打开历史文件 :BufExplorer
-" Plugin 'OmniCppComplete'              " c/c++不全
-" Plugin 'Syntastic'                    " 语法检查
+    " wm界面
+    Plugin 'The-NERD-tree'
+    Plugin 'minibufexpl.vim'              " buffer插件
+    Plugin 'ctags.vim'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-""""""""""""""""""""""""""""""""""""""""""""""""""
+    Plugin 'timestamp.vim'                " 插入最后修改时间
+    Plugin 'plasticboy/vim-markdown'      " Markdown格式高亮
+    Plugin 'flazz/vim-colorschemes'
+    Plugin 'molokai'                      " 配色
+    Plugin 'Solarized'
+    Plugin 'Tabular'                      " 注释等格式对齐插件
+    Plugin 'mru.vim'                      " 历史文件
+    Plugin 'ctrlp.vim'                    " 文件搜寻
+    Plugin 'Easymotion'                   " 文件快速定位
+    Plugin 'pydoc.vim'                    " python文档
+    Plugin 'gundo'                        " 文件时光机
+    Plugin 'Smooth-Scroll'                " 平滑滚动
+    Plugin 'bling/vim-airline'            " 状态栏
+    Plugin 'fugitive.vim'                 " git插件
+    Plugin 'Gist.vim'                     " gist
+    Plugin 'airblade/vim-gitgutter'       " git diff
+    Plugin 'WebAPI.vim'                   " gist依赖插件
+    Plugin 'Tagbar'                       " 代替taglist
+    " Plugin 'Valloric/YouCompleteMe'       " 补全插件
+    " Plugin 'pyflakes.vim'                 " python语法检测
+    " Plugin 'mattn/emmet-vim'              " Zencoding
+    " Plugin 'Pydiction'                    " python自动补全
+    " Plugin 'bufexplorer.zip'              " 打开历史文件 :BufExplorer
+    " Plugin 'OmniCppComplete'              " c/c++补全
+    " Plugin 'Syntastic'                    " 语法检查
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" 全局设置
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" if has('gui_running')
-"     set background=light
-" else
-"     set background=dark
-" endif
-set background=dark
-let g:solarized_termcolors=256 " 终端和shell配色不同
-" let g:solarized_termtrans = 1
-colorscheme  molokai           " molokai zenburn Tomorrow
-set autowrite                  " 自动保存
-" set listchars=tab:>-,trail:-   " tab 显示
-set mouse=a                    " 鼠标支持
-filetype plugin on             " 允许插件
-" syntax enable                  " 语法高亮
-syntax on
-set helplang=cn                " 中文文档 set nu                         " 显示行号
-set relativenumber             " 设置相对行号
-set nobackup                   " 从不备份
-set undodir=~/.undodir
-set cursorline                 " 突出显示当前行
-set cursorcolumn               " 突出显示当前列
-set ruler                      " 打开状态栏标尺
-set showcmd                    " 显示命令
-set showmatch                  " 显示匹配的括号
-set ai                         " 自动缩进
-set si                         " 只能缩进
-set cindent                    " c/c++风格
-set backspace=eol,start,indent
-"set whichwrap+=<,>,h,l         " 退格和方向可以换行
+    call vundle#end()            " required
+    filetype plugin indent on    " required
 
-set expandtab
-set smarttab
-set shiftwidth=4
-set tabstop=4                  " tab转化为4个字符
+" }
 
-set mouse=n                    " 所有模式使用鼠标
-set pastetoggle=<F9>           " 解决复制粘贴格式混乱问题
-set showmatch                  " 高亮显示匹配的括号
-set matchtime=1                " 匹配括号高亮的时间（单位是十分之一秒）
-let &termencoding=&encoding    " 中文设置
-set fileencodings=utf-8,gbk    " 中文设置
-set hlsearch                   " 高亮搜索
-set ignorecase                 " 搜索忽略大小写
-map <F3> :%s/\s\+$//<CR>
-set foldmethod=indent          " 代码折叠 indent
 
-"设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制,好处：误删什么的，如果以前屏幕打开，可以找回
-set t_ti= t_te=
+" General {
 
-"tab切换页面
-set hidden "in order to switch between buffers with unsaved change
-map <s-tab> :bp<cr>
-map <tab> :bn<cr>
+    set autowrite                  " 自动保存
+    set mouse=a                    " 鼠标支持
+    filetype plugin on             " 允许插件
+    set helplang=cn                " 中文文档
+    set nobackup                   " 从不备份
+    set undodir=~/.undodir
+    "set whichwrap+=<,>,h,l         " 退格和方向可以换行
 
-" 插入模式下用绝对行号, 普通模式下用相对
-autocmd InsertEnter * :set norelativenumber number
-autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <F4> :call NumberToggle()<cr>
+    set mouse=n                    " 所有模式使用鼠标
+    set matchtime=1                " 匹配括号高亮的时间（单位是十分之一秒）
+    let &termencoding=&encoding    " 中文设置
+    set fileencodings=utf-8,gbk    " 中文设置
+    set foldmethod=indent          " 代码折叠 indent
 
-"断行
-" set columns=80
-" set tw=80
-" set fo+=Mm
-" solarized
-"
-"nnoremap <F2> :g/^\s*$/d<CR> "去空行
-"set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
-"filetype plugin indent on   "对齐线
-"map <C-A> ggVG"+y
-autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
-set modifiable
+    "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制,好处：误删什么的，如果以前屏幕打开，可以找回
+    set t_ti= t_te=
+
+    "tab切换页面
+    set hidden "in order to switch between buffers with unsaved change
+    map <s-tab> :bp<cr>
+    map <tab> :bn<cr>
+
+    " 插入模式下用绝对行号, 普通模式下用相对
+    autocmd InsertEnter * :set norelativenumber number
+    autocmd InsertLeave * :set relativenumber
+
+    "断行
+    " set columns=80
+    " set tw=80
+    " set fo+=Mm
+
+    "set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
+    "map <C-A> ggVG"+y
+    autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
+    set modifiable
+
+" }
+
+" vim-UI {
+
+    syntax enable                  " 语法高亮
+    set background=dark
+    let g:solarized_termcolors=256
+    colorscheme  solarized           " molokai zenburn Tomorrow
+    " if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+        " let g:solarized_termtrans=1
+        " let g:solarized_contrast="normal"
+        " let g:solarized_visibility="normal"
+    "     color solarized             " Load a colorscheme
+    " endif
+
+    set cursorline                 " 突出显示当前行
+    set cursorcolumn               " 突出显示当前列
+    set relativenumber             " 设置相对行号
+    set ruler                      " Show the ruler
+    set linespace=0                " 行之间没有多余空格
+    set nu                         " 显示行号
+    set showmatch                  " 高亮显示匹配的括号
+    set incsearch                  " 跟踪搜索
+    set hlsearch                   " 高亮搜索
+    set ignorecase                 " 搜索忽略大小写
+    set wildmenu                   " 输入vim命令时补全菜单
+    set wildmode=list:longest,full " 输入Tab时,先列出符合的,再列出最长匹配,最后是全部
+    set scrolljump=5               " 光标离开屏幕滑动距离
+    set scrolloff=3                " 滑动时离上下行最短距离
+    set foldenable                 " 自动折叠
+    set ai                         " 自动缩进
+    set si                         " 只能缩进
+    set cindent                    " c/c++风格
+    set backspace=eol,start,indent
+    " set list                       " 把制表符显示为^I,用$标示行尾
+
+" }
+
+" Formatting {
+    set nowrap                      " 控制长行是否折到下一行显示
+    set autoindent                  " 把当前行的对起格式应用到下一行
+    set shiftwidth=4                " 缩进用4个空格表示
+    set expandtab                   " 用空格代替tab
+    set tabstop=4                   " 一个tab相当于4个空格
+    set smarttab
+    set softtabstop=4               " backspace可以删除缩进
+    set nojoinspaces                "用J命令合并两行时会用一个空格来分隔
+" }
+
+" Key (re)Mappings {
+    "去空行
+    nnoremap <F2> :g/^\s*$/d<CR>
+    " 删除多余空格
+    map <F3> :%s/\s\+$//<CR>
+    " 粘贴不带缩进
+    set pastetoggle=<F9>
+    " 相对和绝对行号切换
+    function! NumberToggle()
+      if(&relativenumber == 1)
+        set norelativenumber number
+      else
+        set relativenumber
+      endif
+    endfunc
+    nnoremap <F4> :call NumberToggle()<cr>
+
+" }
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
