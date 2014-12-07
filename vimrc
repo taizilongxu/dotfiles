@@ -98,7 +98,7 @@
     " set tw=80
     " set fo+=Mm
 
-    "set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
+    set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
     "map <C-A> ggVG"+y
     autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
     set modifiable
@@ -109,19 +109,24 @@
 
     syntax enable                  " 语法高亮
     set background=dark
-    let g:solarized_termcolors=256
-    colorscheme  solarized           " molokai zenburn Tomorrow
-    " if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        " let g:solarized_termtrans=1
-        " let g:solarized_contrast="normal"
-        " let g:solarized_visibility="normal"
-    "     color solarized             " Load a colorscheme
-    " endif
+
+    " colorsheme solarized {
+
+        let g:solarized_termtrans=1
+        let g:solarized_contrast="normal"
+        let g:solarized_visibility="normal"
+
+    " }
+
+    color  solarized           " molokai zenburn Tomorrow
+
+    highlight Normal ctermbg=NONE
+    highlight nonText ctermbg=NONE
 
     set cursorline                 " 突出显示当前行
     set cursorcolumn               " 突出显示当前列
     set relativenumber             " 设置相对行号
-    set ruler                      " Show the ruler
+    set ruler                      " 显示ruler
     set linespace=0                " 行之间没有多余空格
     set nu                         " 显示行号
     set showmatch                  " 高亮显示匹配的括号
@@ -142,6 +147,7 @@
 " }
 
 " Formatting {
+
     set nowrap                      " 控制长行是否折到下一行显示
     set autoindent                  " 把当前行的对起格式应用到下一行
     set shiftwidth=4                " 缩进用4个空格表示
@@ -150,28 +156,64 @@
     set smarttab
     set softtabstop=4               " backspace可以删除缩进
     set nojoinspaces                "用J命令合并两行时会用一个空格来分隔
+
 " }
 
 " Key (re)Mappings {
-    "去空行
-    nnoremap <F2> :g/^\s*$/d<CR>
-    " 删除多余空格
-    map <F3> :%s/\s\+$//<CR>
-    " 粘贴不带缩进
-    set pastetoggle=<F9>
-    " 相对和绝对行号切换
-    function! NumberToggle()
-      if(&relativenumber == 1)
-        set norelativenumber number
-      else
-        set relativenumber
-      endif
-    endfunc
-    nnoremap <F4> :call NumberToggle()<cr>
 
-" }
+    " <F2> 去空行 {
+        nnoremap <F2> :g/^\s*$/d<CR>
+    " }
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
+    " <F3> 删除多余空格 {
+        map <F3> :%s/\s\+$//<CR>
+    " }
+
+    " <F4> 相对和绝对行号切换 {
+        nnoremap <F4> :call NumberToggle()<cr>
+        function! NumberToggle()
+          if(&relativenumber == 1)
+            set norelativenumber number
+          else
+            set relativenumber
+          endif
+        endfunc
+    " }
+
+    " <F5> 编译运行 {
+        map <F5> :call CompileRunGcc()<CR>
+        func! CompileRunGcc()
+            exec "w"
+            if &filetype == 'c'
+                exec "!gcc % -o %<"
+                exec "! ./%<"
+            elseif &filetype == 'cpp'
+                exec "!gcc % -o %<"
+                exec "! ./%<"
+            elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!java %<"
+            elseif &filetype == 'sh'
+                :!./%
+            elseif &filetype == 'python'
+                exec "!python %"
+            endif
+        endfunc
+    " }
+
+    " <F8> C,C++的调试 {
+        map <F8> :call Rungdb()<CR>
+        func! Rungdb()
+            exec "w"
+            exec "!gcc % -g -o %<"
+            exec "!gdb ./%<"
+        endfunc
+    " }
+
+    " <F9> 粘贴不带缩进{
+        set pastetoggle=<F9>
+    " }
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ctrlp
@@ -317,35 +359,6 @@ endfunc
 autocmd BufNewFile * normal G "新建文件后，自动定位到文件末尾
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" 按F5编译运行
-""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F5> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!gcc % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'cpp'
-        exec "!gcc % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'java'
-        exec "!javac %"
-        exec "!java %<"
-    elseif &filetype == 'sh'
-        :!./%
-    elseif &filetype == 'python'
-        exec "!python %"
-    endif
-endfunc
-"C,C++的调试
-map <F8> :call Rungdb()<CR>
-func! Rungdb()
-    exec "w"
-    exec "!gcc % -g -o %<"
-    exec "!gdb ./%<"
-endfunc
-""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " CTags的设定

@@ -52,6 +52,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+export TERM=xterm-256color #256
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
