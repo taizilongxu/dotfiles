@@ -6,7 +6,7 @@
 
     set nocompatible              " be iMproved, required
     filetype off                  " required
-    "  the runtime path to include Vundle and initialize
+    " the runtime path to include Vundle and initialize
 
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
@@ -18,6 +18,7 @@
     Plugin 'trailing-whitespace'          " 增加尾部空格的显示
     Plugin 'commentary.vim'               " 注释多行
     Plugin 'surround.vim'                 " 补全括号或引号等cs,ds,yss
+    " Plugin 'bling/vim-bufferline'        " 显示在airline里的buffer
 
     " wm界面
     Plugin 'The-NERD-tree'
@@ -26,7 +27,7 @@
 
     Plugin 'timestamp.vim'                " 插入最后修改时间
     Plugin 'plasticboy/vim-markdown'      " Markdown格式高亮
-    Plugin 'flazz/vim-colorschemes'
+    Plugin 'flazz/vim-colorschemes'       " 包含大部分配色
     Plugin 'molokai'                      " 配色
     Plugin 'vim-colors-solarized'
     Plugin 'Tabular'                      " 注释等格式对齐插件
@@ -43,6 +44,7 @@
     Plugin 'Tagbar'                       " 代替taglist
     Plugin 'Valloric/YouCompleteMe'       " 补全插件
     Plugin 'SuperTab'
+    " Plugin 'Townk/vim-autoclose'          " 括号补全
     " Plugin 'pyflakes.vim'                 " python语法检测
     " Plugin 'mattn/emmet-vim'              " Zencoding
     " Plugin 'Pydiction'                    " python自动补全
@@ -62,7 +64,7 @@
     set nobackup                   " 从不备份
     set noswapfile                 " 关闭交换文件
     set undodir=~/.undodir
-    "set whichwrap+=<,>,h,l         " 退格和方向可以换行
+    " set whichwrap+=<,>,h,l         " 退格和方向可以换行
 
     set mouse=n                    " 所有模式使用鼠标
     set matchtime=1                " 匹配括号高亮的时间（单位是十分之一秒）
@@ -73,7 +75,7 @@
     " 如果以前屏幕打开，可以找回
     set t_ti= t_te=
 
-    "tab切换页面
+    " tab切换页面
     set hidden "in order to switch between buffers with unsaved change
     map <s-tab> :bp<cr>
     map <tab> :bn<cr>
@@ -82,7 +84,7 @@
     autocmd InsertEnter * :set norelativenumber number
     autocmd InsertLeave * :set relativenumber
 
-    "断行
+    " 断行
     " set columns=80
     " set tw=80
     " set fo+=Mm
@@ -105,6 +107,8 @@
         call togglebg#map("<F6>")  " 切换背景
     " }
 
+    colorscheme solarized           " molokai zenburn Tomorrow
+
     " molokai {
         "let g:molokai_original = 1
         "let g:rehash256 = 1
@@ -123,11 +127,10 @@
         set ignorecase                 " 搜索忽略大小写
     " }
 
-    colorscheme solarized           " molokai zenburn Tomorrow
-
     " 超过80个字符会高亮
     " highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
     " match OverLength /\%81v.\+/
+    " 显示80个字符竖线
     set cc=80
 
     "设置标记一列的背景颜色和数字一行颜色一致
@@ -303,8 +306,8 @@
         " :bd    删除
         let g:miniBufExplMapWindowNavVim = 1   "<C-h,j,k,l>切换到上下左右的窗口中去
         let g:miniBufExplMapWindowNavArrows = 1  "<C-箭头>箭头切换
-        "let g:miniBufExplMapCTabSwitchBufs = 1   "<C-Tab>切换窗口(有冲突)
-        "let g:miniBufExplModSelTarget = 1
+        let g:miniBufExplMapCTabSwitchBufs = 1   "<C-Tab>切换窗口(有冲突)
+        " let g:miniBufExplModSelTarget = 1
         let g:miniBufExplMoreThanOne=0
     " }
 
@@ -373,6 +376,7 @@
     " }
 
     " airline {
+        " let g:airline#extensions#tabline#enabled = 1
         let g:airline_theme="powerlineish" "powerlineish
         let g:airline_powerline_fonts=1
         set laststatus=2
@@ -497,7 +501,7 @@
                 call append(line(".")+1, "      > Author: limbo")
                 call append(line(".")+2, "      > Mail: 468137306@qq.com")
                 call append(line(".")+3, "      > Created Time: ".strftime("%c"))
-                call append(line(".")+4, "      > Last changed: 2014年12月07日 星期日 13时23分25秒
+                call append(line(".")+4, "      > Last changed: 2014年12月07日 星期日 18时27分10秒
                 call append(line(".")+5, " ************************************************************************/")
                 call append(line(".")+6, "#include<stdio.h>")
                 call append(line(".")+7, "")
