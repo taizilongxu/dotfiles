@@ -93,6 +93,15 @@
     " map <C-A> ggVG"+y
     autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
     set modifiable
+
+    " 打开文件时自动回到上次编辑的地方
+    if has("autocmd")
+    autocmd BufRead *.txt set tw=78
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \   exe "normal g'\"" |
+      \ endif
+    endif
 " }
 
 " vim-UI {
@@ -501,7 +510,7 @@
                 call append(line(".")+1, "      > Author: limbo")
                 call append(line(".")+2, "      > Mail: 468137306@qq.com")
                 call append(line(".")+3, "      > Created Time: ".strftime("%c"))
-                call append(line(".")+4, "      > Last changed: 2014年12月07日 星期日 18时27分10秒
+                call append(line(".")+4, "      > Last changed: 2014年12月24日 星期三 11时12分46秒
                 call append(line(".")+5, " ************************************************************************/")
                 call append(line(".")+6, "#include<stdio.h>")
                 call append(line(".")+7, "")
