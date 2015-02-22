@@ -20,6 +20,7 @@
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 
+    Plugin 'rizzatti/dash.vim'
     Plugin 'gmarik/Vundle.vim'            " 必须安装
     Plugin 'SirVer/ultisnips'             " Track the engine.
     Plugin 'honza/vim-snippets'           " Snippets are separated from the engine. Add this if you want them: Plugin 'unite.vim'
@@ -27,6 +28,8 @@
     Plugin 'trailing-whitespace'          " 增加尾部空格的显示
     Plugin 'commentary.vim'               " 注释多行
     Plugin 'surround.vim'                 " 补全括号或引号等cs,ds,yss
+    Plugin 'instant-markdown.vim'
+    Plugin 'wakatime/vim-wakatime'
 
     " wm界面
     Plugin 'The-NERD-tree'
@@ -35,9 +38,7 @@
 
     Plugin 'timestamp.vim'                " 插入最后修改时间
     Plugin 'plasticboy/vim-markdown'      " Markdown格式高亮
-    Plugin 'flazz/vim-colorschemes'
     Plugin 'molokai'                      " 配色
-    Plugin 'vim-colors-solarized'
     Plugin 'Tabular'                      " 注释等格式对齐插件
     Plugin 'mru.vim'                      " 历史文件
     Plugin 'ctrlp.vim'                    " 文件搜寻
@@ -45,6 +46,7 @@
     Plugin 'pydoc.vim'                    " python文档
     Plugin 'Smooth-Scroll'                " 平滑滚动
     Plugin 'bling/vim-airline'            " 状态栏
+    " Plugin 'Lokaltog/powerline'
     Plugin 'fugitive.vim'                 " git插件
     Plugin 'Gist.vim'                     " gist
     Plugin 'airblade/vim-gitgutter'       " git diff
@@ -67,6 +69,9 @@
 " General {
 
     set autowrite                  " 自动保存
+    set shell=bash\ -i
+    set t_Co=256                   " airline 颜色显示
+    set ambiwidth=double
     set mouse=a                    " 鼠标支持
     filetype plugin on             " 允许插件
     set helplang=cn                " 中文文档
@@ -92,6 +97,15 @@
     autocmd InsertEnter * :set norelativenumber number
     autocmd InsertLeave * :set relativenumber
 
+    " 打开文件时自动回到上次编辑的地方
+    if has("autocmd")
+    autocmd BufRead *.txt set tw=78
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \   exe "normal g'\"" |
+      \ endif
+    endif
+
     "断行
     " set columns=80
     " set tw=80
@@ -100,7 +114,7 @@
     " set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
     "map <C-A> ggVG"+y
     autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
-    set modifiable
+    " set modifiable
 
 " }
 
@@ -108,11 +122,15 @@
 
     syntax enable                  " 语法高亮
     set background=dark
+    let g:solarized_termcolors=256
+    colorscheme solarized           " molokai zenburn Tomorrow
+    highlight LineNr ctermfg=grey ctermbg=black
+    highlight clear SignColumn
 
     " colorsheme solarized {
-        let g:solarized_termtrans=1
-        let g:solarized_contrast="normal"
-        let g:solarized_visibility="normal"
+        " let g:solarized_termtrans=1
+        " let g:solarized_contrast="high"
+        " let g:solarized_visibility="high"
     " }
 
     " molokai {
@@ -120,10 +138,9 @@
         "let g:rehash256 = 1
     " }
 
-    colorscheme solarized           " molokai zenburn Tomorrow
 
-    highlight Normal ctermbg=NONE
-    highlight nonText ctermbg=NONE
+    " highlight Normal ctermbg=NONE
+    " highlight nonText ctermbg=NONE
 
     set cursorline                 " 突出显示当前行
     set cursorcolumn               " 突出显示当前列
@@ -338,6 +355,8 @@
 
     " vim-markdown {
         let g:vim_markdown_initial_foldlevel= 1
+        let g:vim_markdown_math=1 " latex
+        let g:vim_markdown_frontmatter=1 " yaml
         let g:vim_markdown_folding_disabled=1 "去掉折叠
         let g:markdown_no_default_key_mappings=1 "默认键失效
     " }
@@ -355,10 +374,19 @@
         " map J <Plug>(expand_region_shrink)
     " }
 
+    " powerline {
+        " set laststatus=2
+        " let g:Powerline_symbols = 'fancy'
+        " set noshowmode
+    "  }
+
     " airline {
         let g:airline_theme="powerlineish" "powerlineish
         let g:airline_powerline_fonts=1
         set laststatus=2
+        set encoding=utf-8
+        let g:airline_left_sep=''
+        let g:airline_right_sep=''
         " let g:airline#extensions#tabline#enabled = 1
         " let g:airline#extensions#tabline#left_sep = ' '
         " let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -483,7 +511,7 @@
                 call append(line(".")+1, "      > Author: limbo")
                 call append(line(".")+2, "      > Mail: 468137306@qq.com")
                 call append(line(".")+3, "      > Created Time: ".strftime("%c"))
-                call append(line(".")+4, "      > Last changed: 2014年12月07日 星期日 09时59分49秒
+                call append(line(".")+4, "      > Last changed: 日  2/22 11:57:52 2015
                 call append(line(".")+5, " ************************************************************************/")
                 call append(line(".")+6, "#include<stdio.h>")
                 call append(line(".")+7, "")
@@ -498,7 +526,3 @@
         autocmd BufNewFile * normal G "新建文件后，自动定位到文件末尾
     " }
 " }
-
-
-
-
