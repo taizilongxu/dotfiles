@@ -16,20 +16,25 @@
     set nocompatible              " be iMproved, required
     filetype off                  " required
     "  the runtime path to include Vundle and initialize
-
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 
     Plugin 'rizzatti/dash.vim'
+    Plugin 'Syntastic'
+    " Plugin ''
+    Plugin 'unite.vim'
+    Plugin 'unite-colorscheme'            " :Unite -auto-preview colorscheme
+    Plugin 'Auto-Pairs'                   " 括号补全
     Plugin 'gmarik/Vundle.vim'            " 必须安装
     Plugin 'SirVer/ultisnips'             " Track the engine.
     Plugin 'honza/vim-snippets'           " Snippets are separated from the engine. Add this if you want them: Plugin 'unite.vim'
+    Plugin 'ervandew/supertab'
     Plugin 'kien/rainbow_parentheses.vim' " 括号增强,彩色
     Plugin 'trailing-whitespace'          " 增加尾部空格的显示
     Plugin 'commentary.vim'               " 注释多行
     Plugin 'surround.vim'                 " 补全括号或引号等cs,ds,yss
     Plugin 'instant-markdown.vim'
-    Plugin 'wakatime/vim-wakatime'
+    " Plugin 'wakatime/vim-wakatime'
 
     " wm界面
     Plugin 'The-NERD-tree'
@@ -40,8 +45,8 @@
     Plugin 'plasticboy/vim-markdown'      " Markdown格式高亮
     Plugin 'molokai'                      " 配色
     Plugin 'Tabular'                      " 注释等格式对齐插件
-    Plugin 'mru.vim'                      " 历史文件
-    Plugin 'ctrlp.vim'                    " 文件搜寻
+    " Plugin 'mru.vim'                      " 历史文件
+    " Plugin 'ctrlp.vim'                    " 文件搜寻
     Plugin 'Easymotion'                   " 文件快速定位
     Plugin 'pydoc.vim'                    " python文档
     Plugin 'Smooth-Scroll'                " 平滑滚动
@@ -58,7 +63,6 @@
     " Plugin 'Pydiction'                    " python自动补全
     " Plugin 'bufexplorer.zip'              " 打开历史文件 :BufExplorer
     " Plugin 'OmniCppComplete'              " c/c++补全
-    " Plugin 'Syntastic'                    " 语法检查
 
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -91,7 +95,7 @@
     "tab切换页面
     set hidden "in order to switch between buffers with unsaved change
     map <s-tab> :bp<cr>
-    map <tab> :bn<cr>
+    map <C-tab> :bn<cr>
 
     " 插入模式下用绝对行号, 普通模式下用相对
     autocmd InsertEnter * :set norelativenumber number
@@ -113,8 +117,8 @@
 
     " set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
     "map <C-A> ggVG"+y
-    autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
-    " set modifiable
+    " autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
+    set modifiable
 
 " }
 
@@ -124,8 +128,11 @@
     set background=dark
     let g:solarized_termcolors=256
     colorscheme solarized           " molokai zenburn Tomorrow
-    highlight LineNr ctermfg=grey ctermbg=black
+    " 设置默认字体
+    se guifont=Consola:h14
+    " highlight LineNr ctermfg=grey ctermbg=black
     highlight clear SignColumn
+    highlight clear LineNr
 
     " colorsheme solarized {
         " let g:solarized_termtrans=1
@@ -153,7 +160,7 @@
     set hlsearch                   " 高亮搜索
     set ignorecase                 " 搜索忽略大小写
     set wildmenu                   " 输入vim命令时补全菜单
-    set wildmode=list:longest,full " 输入Tab时,先列出符合的,再列出最长匹配,最后是全部
+    " set wildmode=list:longest,full " 输入Tab时,先列出符合的,再列出最长匹配,最后是全部
     set scrolljump=5               " 光标离开屏幕滑动距离
     set scrolloff=3                " 滑动时离上下行最短距离
     set foldenable                 " 自动折叠
@@ -161,6 +168,7 @@
     set si                         " 只能缩进
     set cindent                    " c/c++风格
     set backspace=eol,start,indent
+    set cc=80                      " 80列高亮
     " set list                       " 把制表符显示为^I,用$标示行尾
 
 " }
@@ -179,6 +187,27 @@
 " }
 
 " Key (re)Mappings {
+
+
+    " jk is escape
+    inoremap jk <esc>
+
+    " highlight last inserted text
+    nnoremap gV `[v`]
+
+    " move to beginning/end of line
+    nnoremap B ^
+    nnoremap E $
+
+    " $/^ doesn't do anything
+    nnoremap $ <nop>
+    nnoremap ^ <nop>
+
+    " 编辑模式下写括号时的快捷键
+    inoremap <C-h> <Left>
+    inoremap <C-j> <Down>
+    inoremap <C-k> <Up>
+    inoremap <C-l> <Right>
 
     " <F2> 去空行 {
         nnoremap <F2> :g/^\s*$/d<CR>
@@ -200,24 +229,11 @@
     " }
 
     " <F5> 编译运行 {
-        map <F5> :call CompileRunGcc()<CR>
-        func! CompileRunGcc()
+        map <F5> :call CompilePY()<CR>
+        function CompilePY()
             exec "w"
-            if &filetype == 'c'
-                exec "!gcc % -o %<"
-                exec "! ./%<"
-            elseif &filetype == 'cpp'
-                exec "!gcc % -o %<"
-                exec "! ./%<"
-            elseif &filetype == 'java'
-                exec "!javac %"
-                exec "!java %<"
-            elseif &filetype == 'sh'
-                :!./%
-            elseif &filetype == 'python'
-                exec "!python %"
-            endif
-        endfunc
+            exec "!python \"%\""
+        endfunction
     " }
 
     " <F8> C,C++的调试 {
@@ -234,28 +250,38 @@
     " }
 
 " Plugins {
+    " gitgutter{
+        " let g:gitgutter_highlight_lines = 1
+        let g:gitgutter_realtime = 0
+        let g:gitgutter_eager = 0
+    " }
 
+    " unite.vim {
+    nnoremap ,h :Unite buffer<cr>
+    nnoremap ,, :Unite file<cr>
+    " }
     " ctrlp {
-        let g:ctrlp_map = ',,'
-        let g:ctrlp_open_multiple_files = 'v'
+        " let g:ctrlp_map = ',,'
+        " let g:ctrlp_open_multiple_files = 'v'
 
-        set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-        let g:ctrlp_custom_ignore = {
-          \ 'dir':  '\v[\/]\.(git)$',
-          \ 'file': '\v\.(log|jpg|png|jpeg)$',
-          \ }
+        " set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+        " let g:ctrlp_custom_ignore = {
+        "   \ 'dir':  '\v[\/]\.(git)$',
+        "   \ 'file': '\v\.(log|jpg|png|jpeg)$',
+        "   \ }
     " }
 
     " MRU {
-        map ,h :MRU<cr>
-        let MRU_Max_Entries=50 " 记录条数
+        " map ,h :MRU<cr>
+        " let MRU_Max_Entries=50 " 记录条数
     "  }
 
     " ultisnips {
         " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
         let g:UltiSnipsExpandTrigger="<tab>"
         " let g:UltiSnipsJumpForwardTrigger="<c-b>"
-        let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+        let g:UltiSnipsJumpForwardTrigger="<tab>"
+        let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
         " If you want :UltiSnipsEdit to split your window.
         let g:UltiSnipsEditSplit="vertical"
     " }
@@ -304,8 +330,8 @@
         " :b<n>    n是数字，第n个buf
         " :b<tab>    自动补齐
         " :bd    删除
-        let g:miniBufExplMapWindowNavVim = 1   "<C-h,j,k,l>切换到上下左右的窗口中去
-        let g:miniBufExplMapWindowNavArrows = 1  "<C-箭头>箭头切换
+        " let g:miniBufExplMapWindowNavVim = 1   "<C-h,j,k,l>切换到上下左右的窗口中去
+        " let g:miniBufExplMapWindowNavArrows = 1  "<C-箭头>箭头切换
         "let g:miniBufExplMapCTabSwitchBufs = 1   "<C-Tab>切换窗口(有冲突)
         "let g:miniBufExplModSelTarget = 1
         let g:miniBufExplMoreThanOne=0
@@ -344,7 +370,22 @@
         let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
         " 超级有用文件跳转
         nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+        let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+        let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+        let g:SuperTabDefaultCompletionType = '<C-n>'
         " let g:syntastic_always_populate_loc_list = 1
+    " }
+
+    " syntastic {
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
+
+        let g:syntastic_always_populate_loc_list = 1
+        " let g:syntastic_auto_loc_list = 1
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_check_on_wq = 0
+
     " }
 
     " multiple-cursors-master {
@@ -382,7 +423,7 @@
 
     " airline {
         let g:airline_theme="powerlineish" "powerlineish
-        let g:airline_powerline_fonts=1
+        " let g:airline_powerline_fonts=1
         set laststatus=2
         set encoding=utf-8
         let g:airline_left_sep=''
@@ -442,6 +483,9 @@
 
 
 " Settings {
+    " auto-pairs {
+        let g:AutoPairsFlyMode = 1  " flymode
+    " }
 
     " 关闭最后窗口同时关闭nerdtree {
         autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
@@ -460,69 +504,5 @@
                 endif
             endif
         endfunction
-    " }
-
-    " 新建.c,.h,.sh,.java文件，自动插入文件头 {
-        autocmd BufNewFile *.md exec ":call Setmd()"
-        func Setmd()
-            call setline(1,"date: ".strftime("%Y-%m-%d %T"))
-            call append(line("."),"tags: ")
-            call append(line(".")+1,"---")
-            call append(line(".")+2,"")
-        endfunc
-        autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.html,*.php,*java exec ":call SetTitle()"
-        ""定义函数SetTitle，自动插入文件头
-        func SetTitle()
-            if &filetype=='python'
-                call setline(1, "#-*- encoding: UTF-8 -*-")
-                call append(line("."), "#---------------------------------import------------------------------------")
-                call append(line(".")+1, "#---------------------------------------------------------------------------")
-                call append(line(".")+2, "############################################################################")
-            endif
-            if &filetype=='sh'
-                call setline(1,"\#########################################################################")
-                call append(line("."), "\# File Name: ".expand("%"))
-                call append(line(".")+1, "\# Author: limbo")
-                call append(line(".")+2, "\# mail: 468137306@qq.com")
-                call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-                call append(line(".")+4, "\# Last changed:  TIMESTAMP")
-                call append(line(".")+5, "\#########################################################################")
-                call append(line(".")+6, "\#!/bin/bash".expand("%"))
-                call append(line(".")+7, "")
-            endif
-            if &filetype=='html' || &filetype=='php'
-                call setline(1, "<!--*************************************************************************")
-                call append(line("."), "      > File Name: ".expand("%"))
-                call append(line(".")+1, "      > Author: limbo")
-                call append(line(".")+2, "      > Mail: 468137306@qq.com")
-                call append(line(".")+3, "      > Created Time: ".strftime("%c"))
-                call append(line(".")+4, "      > Last changed:  TIMESTAMP")
-                call append(line(".")+5, " ************************************************************************-->")
-                call append(line(".")+6, "")
-            endif
-            if &filetype=='cpp'
-                call append(line(".")+6, "#include<iostream>")
-                call append(line(".")+7, "using namespace std;")
-                call append(line(".")+8, "")
-            endif
-            if &filetype=='c'
-                call setline(1, "/*************************************************************************")
-                call append(line("."), "      > File Name: ".expand("%"))
-                call append(line(".")+1, "      > Author: limbo")
-                call append(line(".")+2, "      > Mail: 468137306@qq.com")
-                call append(line(".")+3, "      > Created Time: ".strftime("%c"))
-                call append(line(".")+4, "      > Last changed: 日  2/22 11:57:52 2015
-                call append(line(".")+5, " ************************************************************************/")
-                call append(line(".")+6, "#include<stdio.h>")
-                call append(line(".")+7, "")
-            endif
-            if &filetype=='php' || &filetype=='html'
-                call setline(9,['<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">','<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">','<head>','    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />','    <title></title>','</head>','<body>','</body>','</html>'])
-            endif
-            if &filetype=='java'
-            call setline(9,['public class '.strpart(expand("%"),0,strlen(expand("%"))-5),'{','}'])
-            endif
-        endfunc
-        autocmd BufNewFile * normal G "新建文件后，自动定位到文件末尾
     " }
 " }
