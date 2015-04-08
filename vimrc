@@ -94,8 +94,8 @@
 
     "tab切换页面
     set hidden "in order to switch between buffers with unsaved change
-    map <s-tab> :bp<cr>
-    map <C-tab> :bn<cr>
+    map <tab> :bp<cr>
+    map <S-tab> :bn<cr>
 
     " 插入模式下用绝对行号, 普通模式下用相对
     autocmd InsertEnter * :set norelativenumber number
@@ -332,7 +332,7 @@
         " :bd    删除
         " let g:miniBufExplMapWindowNavVim = 1   "<C-h,j,k,l>切换到上下左右的窗口中去
         " let g:miniBufExplMapWindowNavArrows = 1  "<C-箭头>箭头切换
-        "let g:miniBufExplMapCTabSwitchBufs = 1   "<C-Tab>切换窗口(有冲突)
+        " let g:miniBufExplMapCTabSwitchBufs = 1   "<C-Tab>切换窗口(有冲突)
         "let g:miniBufExplModSelTarget = 1
         let g:miniBufExplMoreThanOne=0
     " }
@@ -372,7 +372,7 @@
         nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
         let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
         let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-        let g:SuperTabDefaultCompletionType = '<C-n>'
+        " let g:SuperTabDefaultCompletionType = '<C-n>'
         " let g:syntastic_always_populate_loc_list = 1
     " }
 
