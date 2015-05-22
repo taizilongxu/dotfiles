@@ -1,0 +1,182 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.012  000.012: --- VIM STARTING ---
+000.176  000.164: Allocated generic buffers
+000.582  000.406: locale set
+000.588  000.006: clipboard setup
+000.596  000.008: window checked
+001.194  000.598: inits 1
+001.335  000.141: parsing arguments
+001.340  000.005: expanding arguments
+006.343  005.003: shell init
+006.743  000.400: Termcap init
+006.768  000.025: inits 2
+006.957  000.189: init highlight
+007.882  000.068  000.068: sourcing /usr/local/share/vim/vim74/ftoff.vim
+008.394  000.273  000.273: sourcing /Users/limbo/.vim/bundle/Vundle.vim/autoload/vundle.vim
+008.850  000.290  000.290: sourcing /Users/limbo/.vim/bundle/Vundle.vim/autoload/vundle/config.vim
+041.745  000.060  000.060: sourcing /Users/limbo/.vim/bundle/ultisnips/ftdetect/snippets.vim
+041.847  000.064  000.064: sourcing /Users/limbo/.vim/bundle/ultisnips/ftdetect/UltiSnips.vim
+042.199  000.100  000.100: sourcing /Users/limbo/.vim/bundle/vim-markdown/ftdetect/mkd.vim
+042.961  024.380  024.156: sourcing /usr/local/share/vim/vim74/filetype.vim
+043.633  000.051  000.051: sourcing /usr/local/share/vim/vim74/ftplugin.vim
+044.270  000.041  000.041: sourcing /usr/local/share/vim/vim74/indent.vim
+045.556  037.987  012.884: sourcing /Users/limbo/.vimrc.bundles
+046.038  000.017  000.017: sourcing /usr/local/share/vim/vim74/filetype.vim
+046.538  000.011  000.011: sourcing /usr/local/share/vim/vim74/ftplugin.vim
+048.173  000.196  000.196: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+048.656  001.004  000.808: sourcing /usr/local/share/vim/vim74/syntax/synload.vim
+048.688  001.447  000.443: sourcing /usr/local/share/vim/vim74/syntax/syntax.vim
+049.178  000.153  000.153: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+050.476  000.153  000.153: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+051.191  000.155  000.155: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+053.914  004.431  004.123: sourcing /Users/limbo/.vim/colors/solarized.vim
+054.492  047.169  003.123: sourcing $HOME/.vimrc
+054.506  000.380: sourcing vimrc file(s)
+055.219  000.269  000.269: sourcing /Users/limbo/.vim/autoload/expand_region.vim
+055.327  000.446  000.177: sourcing /Users/limbo/.vim/plugin/expand_region.vim
+055.658  000.297  000.297: sourcing /Users/limbo/.vim/plugin/multiple_cursors.vim
+056.587  000.888  000.888: sourcing /Users/limbo/.vim/plugin/signature/mark.vim
+057.358  000.738  000.738: sourcing /Users/limbo/.vim/plugin/signature/marker.vim
+058.065  000.670  000.670: sourcing /Users/limbo/.vim/plugin/signature/sign.vim
+058.830  000.735  000.735: sourcing /Users/limbo/.vim/plugin/signature/utils.vim
+060.640  001.772  001.772: sourcing /Users/limbo/.vim/plugin/signature.vim
+073.640  000.128  000.128: sourcing /Users/limbo/.vim/bundle/dash.vim/autoload/dash/defaults.vim
+073.797  000.449  000.321: sourcing /Users/limbo/.vim/bundle/dash.vim/autoload/dash.vim
+074.397  013.616  013.167: sourcing /Users/limbo/.vim/bundle/dash.vim/plugin/dash.vim
+075.204  000.028  000.028: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/autoloclist.vim
+075.257  000.019  000.019: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/balloons.vim
+075.342  000.056  000.056: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/checker.vim
+075.437  000.026  000.026: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/cursor.vim
+075.511  000.042  000.042: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/highlighting.vim
+075.648  000.063  000.063: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/loclist.vim
+075.760  000.031  000.031: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/modemap.vim
+075.816  000.022  000.022: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/notifiers.vim
+075.866  000.022  000.022: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/registry.vim
+075.913  000.021  000.021: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/signs.vim
+076.502  000.351  000.351: sourcing /Users/limbo/.vim/bundle/Syntastic/autoload/syntastic/util.vim
+091.178  000.142  000.142: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/autoloclist.vim
+091.553  000.165  000.165: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/balloons.vim
+091.897  000.285  000.285: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/checker.vim
+092.366  000.226  000.226: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/cursor.vim
+092.671  000.195  000.195: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/highlighting.vim
+093.523  000.708  000.708: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/loclist.vim
+093.944  000.197  000.197: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/modemap.vim
+094.131  000.117  000.117: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/notifiers.vim
+094.776  000.560  000.560: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/registry.vim
+095.153  000.163  000.163: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic/signs.vim
+098.122  022.166  019.057: sourcing /Users/limbo/.vim/bundle/Syntastic/plugin/syntastic.vim
+102.338  003.565  003.565: sourcing /Users/limbo/.vim/bundle/unite.vim/autoload/unite.vim
+102.469  003.922  000.357: sourcing /Users/limbo/.vim/bundle/unite.vim/plugin/unite/bookmark.vim
+102.815  000.250  000.250: sourcing /Users/limbo/.vim/bundle/unite.vim/plugin/unite/buffer.vim
+102.928  000.069  000.069: sourcing /Users/limbo/.vim/bundle/unite.vim/plugin/unite/history_yank.vim
+103.077  000.113  000.113: sourcing /Users/limbo/.vim/bundle/unite.vim/plugin/unite/mru.vim
+103.215  000.105  000.105: sourcing /Users/limbo/.vim/bundle/unite.vim/plugin/unite/window.vim
+103.668  000.419  000.419: sourcing /Users/limbo/.vim/bundle/unite.vim/plugin/unite.vim
+104.294  000.463  000.463: sourcing /Users/limbo/.vim/bundle/Auto-Pairs/plugin/auto-pairs.vim
+104.513  000.051  000.051: sourcing /Users/limbo/.vim/bundle/ultisnips/plugin/snipMate_compatibility.vim
+105.334  000.210  000.210: sourcing /Users/limbo/.vim/bundle/ultisnips/autoload/UltiSnips/bootstrap.vim
+158.995  054.079  053.869: sourcing /Users/limbo/.vim/bundle/ultisnips/autoload/UltiSnips/map_keys.vim
+159.142  054.600  000.521: sourcing /Users/limbo/.vim/bundle/ultisnips/plugin/UltiSnips.vim
+159.364  000.054  000.054: sourcing /Users/limbo/.vim/bundle/vim-snippets/plugin/vimsnippets.vim
+160.772  001.280  001.280: sourcing /Users/limbo/.vim/bundle/supertab/plugin/supertab.vim
+160.991  000.072  000.072: sourcing /Users/limbo/.vim/bundle/rainbow_parentheses.vim/plugin/rainbow_parentheses.vim
+161.202  000.083  000.083: sourcing /Users/limbo/.vim/bundle/trailing-whitespace/plugin/trailing-whitespace.vim
+161.552  000.221  000.221: sourcing /Users/limbo/.vim/bundle/commentary.vim/plugin/commentary.vim
+162.302  000.621  000.621: sourcing /Users/limbo/.vim/bundle/surround.vim/plugin/surround.vim
+162.636  000.208  000.208: sourcing /Users/limbo/.vim/bundle/instant-markdown.vim/plugin/instant-markdown.vim
+168.212  005.457  005.457: sourcing /Users/limbo/.vim/bundle/The-NERD-tree/plugin/NERD_tree.vim
+170.152  001.753  001.753: sourcing /Users/limbo/.vim/bundle/minibufexpl.vim/plugin/minibufexpl.vim
+170.511  000.219  000.219: sourcing /Users/limbo/.vim/bundle/ctags.vim/plugin/ctags.vim
+171.090  000.448  000.448: sourcing /Users/limbo/.vim/bundle/timestamp.vim/plugin/timestamp.vim
+171.648  000.381  000.381: sourcing /Users/limbo/.vim/bundle/Tabular/plugin/Tabular.vim
+172.886  000.770  000.770: sourcing /Users/limbo/.vim/bundle/Easymotion/autoload/EasyMotion.vim
+174.397  002.615  001.845: sourcing /Users/limbo/.vim/bundle/Easymotion/plugin/EasyMotion.vim
+175.015  000.287  000.287: sourcing /Users/limbo/.vim/bundle/pydoc.vim/plugin/pydoc.vim
+175.271  000.123  000.123: sourcing /Users/limbo/.vim/bundle/Smooth-Scroll/plugin/smooth_scroll.vim
+175.938  000.189  000.189: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline.vim
+176.161  000.772  000.583: sourcing /Users/limbo/.vim/bundle/vim-airline/plugin/airline.vim
+180.391  004.103  004.103: sourcing /Users/limbo/.vim/bundle/fugitive.vim/plugin/fugitive.vim
+180.639  000.080  000.080: sourcing /Users/limbo/.vim/bundle/Gist.vim/plugin/gist.vim
+181.593  000.148  000.148: sourcing /Users/limbo/.vim/bundle/vim-gitgutter/autoload/gitgutter/highlight.vim
+182.378  001.612  001.464: sourcing /Users/limbo/.vim/bundle/vim-gitgutter/plugin/gitgutter.vim
+183.303  000.766  000.766: sourcing /Users/limbo/.vim/bundle/Tagbar/plugin/tagbar.vim
+183.869  000.422  000.422: sourcing /Users/limbo/.vim/bundle/YouCompleteMe/plugin/youcompleteme.vim
+184.343  000.091  000.091: sourcing /usr/local/share/vim/vim74/plugin/getscriptPlugin.vim
+184.638  000.263  000.263: sourcing /usr/local/share/vim/vim74/plugin/gzip.vim
+184.906  000.236  000.236: sourcing /usr/local/share/vim/vim74/plugin/matchparen.vim
+185.516  000.575  000.575: sourcing /usr/local/share/vim/vim74/plugin/netrwPlugin.vim
+185.592  000.034  000.034: sourcing /usr/local/share/vim/vim74/plugin/rrhelper.vim
+185.673  000.046  000.046: sourcing /usr/local/share/vim/vim74/plugin/spellfile.vim
+185.893  000.186  000.186: sourcing /usr/local/share/vim/vim74/plugin/tarPlugin.vim
+186.148  000.212  000.212: sourcing /usr/local/share/vim/vim74/plugin/tohtml.vim
+186.416  000.166  000.166: sourcing /usr/local/share/vim/vim74/plugin/vimballPlugin.vim
+186.692  000.230  000.230: sourcing /usr/local/share/vim/vim74/plugin/zipPlugin.vim
+187.150  000.297  000.297: sourcing /Users/limbo/.vim/after/plugin/indentLine.vim
+187.584  000.165  000.165: sourcing /Users/limbo/.vim/bundle/ultisnips/after/plugin/UltiSnips_after.vim
+188.569  000.257  000.257: sourcing /Users/limbo/.vim/bundle/Tabular/autoload/tabular.vim
+190.379  002.439  002.182: sourcing /Users/limbo/.vim/bundle/Tabular/after/plugin/TabularMaps.vim
+190.545  007.872: loading plugins
+190.550  000.005: inits 3
+190.921  000.371: reading viminfo
+190.949  000.028: setting raw mode
+190.956  000.007: start termcap
+190.998  000.042: clearing screen
+193.620  000.618  000.618: sourcing /usr/local/share/vim/vim74/scripts.vim
+194.288  000.221  000.221: sourcing /Users/limbo/.vim/bundle/ultisnips/autoload/UltiSnips.vim
+195.840  000.293  000.293: sourcing /usr/local/share/vim/vim74/ftplugin/vim.vim
+197.425  000.126  000.126: sourcing /usr/local/share/vim/vim74/indent/vim.vim
+206.298  000.605  000.605: sourcing /usr/local/share/vim/vim74/syntax/pod.vim
+210.336  005.071  004.466: sourcing /usr/local/Cellar/vim/7.4.488/share/vim/vim74/syntax/perl.vim
+214.160  003.453  003.453: sourcing /usr/local/Cellar/vim/7.4.488/share/vim/vim74/syntax/ruby.vim
+215.200  000.824  000.824: sourcing /usr/local/Cellar/vim/7.4.488/share/vim/vim74/syntax/python.vim
+216.537  018.068  008.720: sourcing /usr/local/share/vim/vim74/syntax/vim.vim
+217.900  000.147  000.147: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/init.vim
+218.546  000.152  000.152: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/parts.vim
+219.516  000.331  000.331: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions.vim
+219.945  000.100  000.100: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/quickfix.vim
+220.338  000.073  000.073: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/unite.vim
+220.729  000.079  000.079: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/netrw.vim
+221.573  000.239  000.239: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/hunks.vim
+222.315  000.182  000.182: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/tagbar.vim
+223.176  000.274  000.274: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/branch.vim
+223.771  000.083  000.083: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/syntastic.vim
+224.297  000.178  000.178: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/whitespace.vim
+228.284  000.153  000.153: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/section.vim
+228.954  000.237  000.237: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/highlighter.vim
+231.343  000.121  000.121: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/themes.vim
+231.522  000.701  000.580: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/themes/powerlineish.vim
+232.059  000.172  000.172: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/builder.vim
+232.484  000.132  000.132: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/util.vim
+233.217  000.143  000.143: sourcing /Users/limbo/.vim/bundle/vim-airline/autoload/airline/extensions/default.vim
+248.004  000.236  000.236: sourcing /Users/limbo/.vim/bundle/Syntastic/autoload/syntastic/log.vim
+249.079  000.247  000.247: sourcing /Users/limbo/.vim/bundle/Syntastic/syntax_checkers/vim/vimlint.vim
+253.403  000.206  000.206: sourcing /Users/limbo/.vim/bundle/vim-gitgutter/autoload/gitgutter.vim
+253.873  000.195  000.195: sourcing /Users/limbo/.vim/bundle/vim-gitgutter/autoload/gitgutter/utility.vim
+254.677  000.450  000.450: sourcing /Users/limbo/.vim/bundle/vim-gitgutter/autoload/gitgutter/diff.vim
+279.774  000.400  000.400: sourcing /Users/limbo/.vim/bundle/vim-gitgutter/autoload/gitgutter/hunk.vim
+280.693  000.362  000.362: sourcing /Users/limbo/.vim/bundle/vim-gitgutter/autoload/gitgutter/sign.vim
+282.107  000.079  000.079: sourcing /Users/limbo/.vim/bundle/unite.vim/autoload/vital.vim
+283.172  000.240  000.240: sourcing /Users/limbo/.vim/bundle/unite.vim/autoload/vital/_dbf7878.vim
+307.161  000.417  000.417: sourcing /Users/limbo/github/dotfiles/vim_set/bundle/unite.vim/autoload/vital/_dbf7878/prelude.vim
+338.222  000.269  000.269: sourcing /Users/limbo/github/dotfiles/vim_set/bundle/unite.vim/autoload/vital/_dbf7878/data/list.vim
+343.200  061.450  060.445: sourcing /Users/limbo/.vim/bundle/unite.vim/autoload/unite/util.vim
+343.437  061.980  000.530: sourcing /Users/limbo/.vim/bundle/unite.vim/autoload/unite/sources/buffer.vim
+343.744  000.146  000.146: sourcing /Users/limbo/.vim/bundle/unite.vim/autoload/unite/sources/window.vim
+362.135  084.213: opening buffers
+398.583  032.010  032.010: sourcing /Users/limbo/.vim/bundle/unite.vim/autoload/unite/sources/mru.vim
+413.487  019.342: BufEnter autocommands
+413.494  000.007: editing files in windows
+414.289  000.554  000.554: sourcing /Users/limbo/.vim/bundle/rainbow_parentheses.vim/autoload/rainbow_parentheses.vim
+417.732  000.334  000.334: sourcing /Users/limbo/.vim/bundle/The-NERD-tree/nerdtree_plugin/exec_menuitem.vim
+418.467  000.620  000.620: sourcing /Users/limbo/.vim/bundle/The-NERD-tree/nerdtree_plugin/fs_menu.vim
+426.145  000.946  000.946: sourcing /Users/limbo/.vim/bundle/YouCompleteMe/autoload/youcompleteme.vim
+646.930  230.982: VimEnter autocommands
+646.941  000.011: before starting main loop
+723.816  003.552  003.552: sourcing /Users/limbo/.vim/bundle/Tagbar/autoload/tagbar.vim
+784.312  133.819: first screen update
+784.316  000.004: --- VIM STARTED ---

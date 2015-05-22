@@ -23,14 +23,15 @@ endif
     let &termencoding=&encoding    " 中文设置
     set fileencodings=utf-8,gbk    " 中文设置
     set foldmethod=indent          " 代码折叠 indent
+    set foldlevel=99
 
     "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制,好处：误删什么的，如果以前屏幕打开，可以找回
     set t_ti= t_te=
 
     "tab切换页面
     set hidden "in order to switch between buffers with unsaved change
-    map <tab> :bp<cr>
-    map <S-tab> :bn<cr>
+    map <tab> :bn<cr>
+    map <S-tab> :bp<cr>
 
     " 插入模式下用绝对行号, 普通模式下用相对
     autocmd InsertEnter * :set norelativenumber number
@@ -62,15 +63,16 @@ endif
     syntax enable                  " 语法高亮
     set background=dark
     let g:solarized_termcolors=256
-    colorscheme solarized           " molokai zenburn Tomorrow
-    se guifont=Consola:h14          " 设置默认字体
+    " colorscheme Tomorrow-Night-Eighties         " molokai zenburn Tomorrow
+    colorscheme solarized         " molokai zenburn Tomorrow
+    se guifont=Consola:h12       " 设置默认字体
     highlight clear SignColumn
     highlight clear LineNr
 
     " colorsheme solarized {
         " let g:solarized_termtrans=1
-        " let g:solarized_contrast="high"
-        " let g:solarized_visibility="high"
+        " let g:solarized_contrast="low"
+        " let g:solarized_visibility="low"
     " }
 
     " molokai {
@@ -81,9 +83,9 @@ endif
     set cursorline                 " 突出显示当前行
     set cursorcolumn               " 突出显示当前列
     set relativenumber             " 设置相对行号
+    set nu                         " 显示行号
     set ruler                      " 显示ruler
     set linespace=0                " 行之间没有多余空格
-    set nu                         " 显示行号
     set showmatch                  " 高亮显示匹配的括号
     set incsearch                  " 跟踪搜索
     set hlsearch                   " 高亮搜索
@@ -138,6 +140,7 @@ endif
     inoremap <C-k> <Up>
     inoremap <C-l> <Right>
 
+    map <S-p> :!open -a /Applications/Google\ Chrome.app/ "%:p" <CR>
     " <F2> 去空行 {
         nnoremap <F2> :g/^\s*$/d<CR>
     " }
@@ -158,20 +161,58 @@ endif
     " }
 
     " <F5> 编译运行 {
-        map <F5> :call CompilePY()<CR>
-        function CompilePY()
+        map <F5> :call CompileRun()<CR>
+        func! CompileRun()
             exec "w"
-            exec "!python \"%\""
-        endfunction
+            if &filetype == 'c'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+                exec "!rm ./%<"
+            elseif &filetype == 'cpp'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+                exec "!rm ./%<"
+            elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!time java %<"
+                exec "!rm ./%<.class"
+            elseif &filetype == 'sh'
+                exec "!time bash %"
+            elseif &filetype == 'python'
+                exec "!time python %"
+            elseif &filetype == 'html'
+                exec "!chrome % &"
+            elseif &filetype == 'go'
+                exec "!go build %<"
+                exec "!time go run %"
+            elseif &filetype == 'md' "MarkDown 解决方案为VIM + Chrome浏览器的MarkDown Preview Plus插件，保存后实时预览
+                exec ":!open -a /Applications/Google\ Chrome.app/ % &"
+            elseif &filetype == 'javascript'
+                exec "!time node %"
+            elseif &filetype == 'coffee'
+                exec "!time coffee %"
+            elseif &filetype == 'ruby'
+                exec "!time ruby %"
+            endif
+        endfunc
     " }
 
-    " <F8> C,C++的调试 {
-        map <F8> :call Rungdb()<CR>
-        func! Rungdb()
-            exec "w"
-            exec "!gcc % -g -o %<"
-            exec "!gdb ./%<"
+    " <F6> 开启/关闭行号显示 {
+        function! HideNumber()
+          if(&relativenumber == &number)
+            set relativenumber! number!
+          elseif(&number)
+            set number!
+          else
+            set relativenumber!
+          endif
+          set number?
         endfunc
+        nnoremap <F6> :call HideNumber()<CR>
+    " }
+
+    " <F7> 语法开关 {
+        nnoremap <F7> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
     " }
 
     " <F9> 粘贴不带缩进{

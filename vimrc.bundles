@@ -1,6 +1,4 @@
-
 " Vundle {
-
     " All of your Plugins must be added before the following line
     " To ignore plugin indent changes, instead use:
     "filetype plugin on
@@ -34,6 +32,8 @@
     Plugin 'commentary.vim'               " 注释多行
     Plugin 'surround.vim'                 " 补全括号或引号等cs,ds,yss
     Plugin 'instant-markdown.vim'
+    Plugin 'junegunn/goyo.vim'            " :Goyo
+    Plugin 'mattn/emmet-vim'
     " Plugin 'wakatime/vim-wakatime'
 
     " wm界面
@@ -51,27 +51,29 @@
     Plugin 'pydoc.vim'                    " python文档
     Plugin 'Smooth-Scroll'                " 平滑滚动
     Plugin 'bling/vim-airline'            " 状态栏
-    " Plugin 'Lokaltog/powerline'
     Plugin 'fugitive.vim'                 " git插件
     Plugin 'Gist.vim'                     " gist
     Plugin 'airblade/vim-gitgutter'       " git diff
     Plugin 'WebAPI.vim'                   " gist依赖插件
     Plugin 'Tagbar'                       " 代替taglist
     Plugin 'Valloric/YouCompleteMe'       " 补全插件
+    Plugin 'python.vim'
     " Plugin 'pyflakes.vim'                 " python语法检测
     " Plugin 'mattn/emmet-vim'              " Zencoding
     " Plugin 'Pydiction'                    " python自动补全
     " Plugin 'bufexplorer.zip'              " 打开历史文件 :BufExplorer
-    " Plugin 'OmniCppComplete'              " c/c++补全
     call vundle#end()            " required
     filetype plugin indent on    " required
 " }
 
 " Plugins {
     " gitgutter{
+        " <Leader>hp 查看差异
+        " ]c 下一个不同处
+        " [c 上一个不同处
         " let g:gitgutter_highlight_lines = 1
-        let g:gitgutter_realtime = 0
-        let g:gitgutter_eager = 0
+        let g:gitgutter_realtime = 750
+        " let g:gitgutter_eager = 0
     " }
 
     " unite.vim {
@@ -117,7 +119,7 @@
         autocmd FileType apache set commentstring=#\ %s
     " }
 
-    " ranbow_parenthese.vim {
+    " rainbow_parenthese.vim {
         let g:rbpt_colorpairs = [
             \ ['brown',       'RoyalBlue3'],
             \ ['Darkblue',    'SeaGreen3'],
@@ -136,9 +138,8 @@
             \ ['darkred',     'DarkOrchid3'],
             \ ['red',         'firebrick3'],
             \ ]
-        let g:rbpt_max = 40
+        let g:rbpt_max = 16
         let g:rbpt_loadcmd_toggle = 0
-        "always on:
         au VimEnter * RainbowParenthesesToggle
         au Syntax * RainbowParenthesesLoadRound
         au Syntax * RainbowParenthesesLoadSquare
@@ -311,6 +312,9 @@
 
     " auto-pairs {
         let g:AutoPairsFlyMode = 1  " flymode
+    " }
+    " emmet {
+        " let g:user_emmet_expandabbr_key = '<Tab>'
     " }
 
 " }
