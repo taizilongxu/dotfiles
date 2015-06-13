@@ -1,0 +1,22 @@
+[user]
+    name = hackerxu
+    email = 468137306@qq.com
+[core]
+    editor = vim
+[alias]
+    ci = commit -a -v
+    co = checkout
+    st = status
+    br = branch
+    throw = reset --hard HEAD
+    throwh = reset --hard HEAD^
+[color]
+    ui = true
+[push]
+    default = current
+[merge]
+    tool = meld
+[global]
+	user = taizilongxu
+[github]
+	user = taizilongxu

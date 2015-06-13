@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # miloshadzic pygmalion dpoggi smt prose agnoster
-ZSH_THEME="smt"
+ZSH_THEME="aussiegeek"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -46,7 +46,7 @@ ZSH_THEME="smt"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump github pylint tmuxinator sudo)
+plugins=(git autojump github pylint tmuxinator sudo colored-man zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
