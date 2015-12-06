@@ -14,5 +14,3 @@ alias cls='clear'
 # alias ls='ls --color=auto'
 # export CLICOLOR=1
 # export LSCOLORS=dxfxcxdxbxegedabagacad
-
-

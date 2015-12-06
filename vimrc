@@ -33,8 +33,8 @@ endif
     map <S-tab> :bn<cr>
 
     " 插入模式下用绝对行号, 普通模式下用相对
-    autocmd InsertEnter * :set norelativenumber number
-    autocmd InsertLeave * :set relativenumber
+    " autocmd InsertEnter * :set norelativenumber number
+    " autocmd InsertLeave * :set relativenumber
 
     " 打开文件时自动回到上次编辑的地方
     if has("autocmd")
@@ -80,10 +80,10 @@ endif
 
     set cursorline                 " 突出显示当前行
     set cursorcolumn               " 突出显示当前列
-    set relativenumber             " 设置相对行号
     set ruler                      " 显示ruler
     set linespace=0                " 行之间没有多余空格
     set nu                         " 显示行号
+    " set relativenumber             " 设置相对行号
     set showmatch                  " 高亮显示匹配的括号
     set incsearch                  " 跟踪搜索
     set hlsearch                   " 高亮搜索
@@ -147,14 +147,14 @@ endif
     " }
 
     " <F4> 相对和绝对行号切换 {
-        nnoremap <F4> :call NumberToggle()<cr>
-        function! NumberToggle()
-          if(&relativenumber == 1)
-            set norelativenumber number
-          else
-            set relativenumber
-          endif
-        endfunc
+        " nnoremap <F4> :call NumberToggle()<cr>
+        " function! NumberToggle()
+        "   if(&relativenumber == 1)
+        "     set norelativenumber number
+        "   else
+        "     set relativenumber
+        "   endif
+        " endfunc
     " }
 
     " <F5> 编译运行 {
