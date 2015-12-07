@@ -1,0 +1,19 @@
+export LC_ALL="en_US.UTF-8"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+eval `dircolors ~/.dir_colors`
+export EDITOR=vim
+AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=8'
+
+DOCKER_OPTS="$DOCKER_OPTS --registry-mirror=http://docker.corp.qunar.com"
+DOCKER_OPTS="$DOCKER_OPTS --insecure-registry docker.corp.qunar.com"
+DOCKER_OPTS="$DOCKER_OPTS --dns=10.88.128.11 --dns=10.88.128.12 --dns=10.88.128.13"
+
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export PATH=${JAVA_HOME}/bin:$PATH
+export MESOS_NATIVE_JAVA_LIBRARY="/usr/local/Cellar/mesos/0.25.0_1/lib/libmesos.dylib"
+export LIBPROCESS_IP="10.86.193.111"
+export PATH="/usr/local/sbin:$PATH"
+
+

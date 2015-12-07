@@ -1,0 +1,21 @@
+alias node="nodejs"
+alias zshconfig="edit ~/.zshrc"
+alias ohmyzsh="edit ~/.oh-my-zsh"
+alias diff="colordiff"
+alias df="df -H"
+alias k='k -h'
+alias du="du -ch"
+alias ls="ls --color=auto"
+
+alias e='vim'
+alias proxy='proxychains4'
+alias rm="trash-put"
+# alias python='ipython'
+# alias tmux='tmux -2'
+alias dstat='dstat -cdlmnpsy'
+alias http='python -m SimpleHTTPServer'
+
+# blog
+alias blog="cd /Users/limbo/Cloud/jekyll_blog_source/_posts"
+alias build_blog="cd /Users/limbo/Cloud/jekyll_blog_source;jekyll build;cd _site;git add -A;git commit -am 'add';git push"
+alias bb="build_blog"
