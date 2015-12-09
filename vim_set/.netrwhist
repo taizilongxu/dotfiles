@@ -1,4 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/limbo/Cloud/cli/douban.fm.egg-info'
 let g:netrw_dirhist_2='/Users/limbo/test'
+let g:netrw_dirhist_3='/Users/limbo/.antigen'
+let g:netrw_dirhist_4='/Users/limbo/.antigen/.git'
+let g:netrw_dirhist_5='/Users/limbo/.antigen'
+let g:netrw_dirhist_6='/Users/limbo/.antigen/repos'
+let g:netrw_dirhist_7='/Users/limbo/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git'
+let g:netrw_dirhist_8='/Users/limbo/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git/plugins'
+let g:netrw_dirhist_9='/Users/limbo/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh.git/plugins/osx'
