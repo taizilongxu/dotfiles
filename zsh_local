@@ -5,6 +5,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 eval `dircolors ~/.dir_colors`
 export EDITOR=vim
 AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=8'
+unset COMPLETION_WAITING_DOTS
+ENABLE_CORRECTION="true"
 
 DOCKER_OPTS="$DOCKER_OPTS --registry-mirror=http://docker.corp.qunar.com"
 DOCKER_OPTS="$DOCKER_OPTS --insecure-registry docker.corp.qunar.com"
