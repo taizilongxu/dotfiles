@@ -19,3 +19,7 @@ dotfiles
 6. .zshrc
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/taizilongxu/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
