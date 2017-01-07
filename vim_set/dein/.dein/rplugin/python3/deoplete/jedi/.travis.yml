@@ -1,0 +1,28 @@
+language: python
+python: 3.5
+sudo: false
+env:
+    - TOXENV=py26
+    - TOXENV=py27
+    - TOXENV=py33
+    - TOXENV=py34
+    - TOXENV=py35
+    - TOXENV=pypy
+    - TOXENV=cov
+    - TOXENV=sith
+matrix:
+    allow_failures:
+        - env: TOXENV=cov
+        - env: TOXENV=sith
+        - env: TOXENV=pypy
+python: 3.5
+install:
+    - pip install --quiet tox 'virtualenv<14.0.0' 'pip<8.0.0'
+script:
+    - tox
+after_script:
+    - if [ $TOXENV == "cov" ]; then
+      pip install --quiet --use-mirrors coveralls;
+      coveralls;
+      fi
+
